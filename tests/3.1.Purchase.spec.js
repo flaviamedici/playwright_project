@@ -22,7 +22,33 @@ await page.getByRole('button', { name: 'View Cart' }).click();
 
 
 //Cart Assertion
-await expect(page.locator('h3[data-hook="EmptyState.title]')).not.toBeVisible(); 
+await expect(page.locator('h3[data-hook="EmptyState.title"]')).not.toBeVisible(); 
 
-await page.pause();
+await page.getByRole('button', { name: 'Checkout' }).click();
+await page.waitForTimeout(5000);
+
+await page.getByRole('textbox', { name: 'Email' }).fill('test@example.com');
+await page.getByRole('textbox', { name: 'First name' }).fill('Mary');
+await page.getByRole('textbox', { name: 'Last name' }).fill('Smith');
+await page.getByRole('textbox', { name: 'Phone' }).fill('+1234567890');
+
+await page.getByRole('combobox', { name: 'Country/Region' }).click();
+await page.getByText('Canada').click();
+
+await page.getByRole('combobox', { name: 'Address' }).fill('123 Maple Street');
+await page.getByRole('textbox', { name: 'City' }).fill('Toronto');
+await page.getByRole('combobox', { name: 'Province' }).click();
+await page.getByText('Ontario').click();
+await page.getByRole('textbox', { name: 'Zip / Postal code' }).fill('M4B 1B3');
+
+// Click the Continue button
+await page.getByRole('button', { name: 'Continue' }).click();
+
+// Click the Continue button again in the Checkout page
+await page.getByRole('button', { name: 'Continue' }).click();
+
+//Click the button to place an order and pay
+await page.getByRole('button', { name: 'Place Order & Pay' }).click();
+
+
 });

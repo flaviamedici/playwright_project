@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 // Please note that the locator for the account button in the video differs from the current one,
 // as Wix has since updated it. We have made the necessary changes in the file accordingly.
 
-test.only('End-to-End Purchase Flow for a Single Product', async ({ page }) => {
+test('End-to-End Purchase Flow for a Single Product', async ({ page }) => {
   test.setTimeout(50000);  
 // Navigate to the Testing101 website
 await page.goto('https://www.testing101.net/category/all-products');

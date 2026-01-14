@@ -4,7 +4,7 @@ const { test, expect } = require('@playwright/test');
 // as Wix has since updated it. We have made the necessary changes in the file accordingly.
 
 test('End-to-End Purchase Flow for a Single Product', async ({ page }) => {
-  test.setTimeout(50000);  
+test.setTimeout(50000);  
 // Navigate to the Testing101 website
 await page.goto('https://www.testing101.net/category/all-products');
 await page.waitForTimeout(5000);

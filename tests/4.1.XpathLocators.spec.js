@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
 
-test.only('XPath Playwright Locators', async ({ page }) => {
+test('XPath Playwright Locators', async ({ page }) => {
 // Navigate to the Testing101 website
 await page.goto('https://www.testing101.net/playwrightlocators');
 await page.waitForTimeout(5000);

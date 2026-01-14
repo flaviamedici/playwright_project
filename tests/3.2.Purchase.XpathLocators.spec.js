@@ -15,6 +15,21 @@ const buttonAddToCartPLP = page.locator("xpath=//div[@data-slug='americano']//sp
 await buttonAddToCartPLP.waitFor();
 await buttonAddToCartPLP.click();
 
+//Start interacting with the iframe
+const iframeMinicart = page.frameLocator('xpath=//iframe[contains(@class, "U73P_q")]');
+const buttonViewCart = iframeMinicart.locator('xpath=//footer//span[text()="View Cart"]');
+await buttonViewCart.waitFor();
+await buttonViewCart.click();
 
+//Cart Assertion
+const assertionEmptyCart = page.locator('xpath=//h3[@data-hook="EmptyState.title"]');
+await expect(assertionEmptyCart).not.toBeVisible();
+
+//Click on the checkout button on the My Cart page
+const buttonCheckout = page.locator('xpath=//span[text()="Checkout"]');
+await buttonCheckout.waitFor();
+await buttonCheckout.click();   
+
+await page.pause();
 
 });

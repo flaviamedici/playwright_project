@@ -52,12 +52,12 @@ await fieldAddress.fill('123 Maple Street')
 const fieldCity = page.locator("xpath=//input[@aria-label='City']");
 await fieldCity.fill('Toronto');
 
-const dropdownProvince = page.locator("xpath=//*[@id='form-field-input-104cd079-756e-4fa1-6f33-07f1a9969567-TPAMultiSection_ltbvfekh-eb42bc72']")
+const dropdownProvince = page.locator("xpath=//div[@data-field-type='MLA_SUBDIVISION']//input[@class='sD4fPao']")
 await dropdownProvince.click();
 const dropdownProvinceOption = page.locator("xpath=//div[text()='Ontario']");
 await dropdownProvinceOption.click();
 
-const fieldZipCode = page.locator("xpath=//input[@aria-label='Zip / Postal Code']");
+const fieldZipCode = page.locator("xpath=//input[@aria-label='Zip / Postal code']");
 await fieldZipCode.fill('M4B 1B3');
 
 const buttonContinueCheckout = page.locator("xpath=//span[text()='Continue']");
@@ -67,6 +67,16 @@ const buttonContinueCheckout2 = page.locator("xpath=//span[text()='Continue']");
 await buttonContinueCheckout2.click();
 
 const buttonPlaceOrder = page.locator("xpath=//span[text()='Place Order & Pay']");
+await buttonPlaceOrder.waitFor();
 await buttonPlaceOrder.click();
+
+await page.waitForTimeout(5000);
+
+//Assertion
+await expect(
+page.locator('xpath=//span[text()="You\'ll receive a confirmation email soon."]')
+).toBeVisible({
+    message: 'Error: Purchase confirmation message was not displayed.'
+});
 
 });

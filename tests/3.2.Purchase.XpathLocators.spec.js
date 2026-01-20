@@ -1,9 +1,10 @@
 import { test, expect } from '@playwright/test';
+import {URLs} from '../Common/URLs';
 
 test.only('End-to-End Purchase Flow with the Xpath locators', async ({ page }) => {
 test.setTimeout(50000);  
 // Navigate to the Testing101 website
-await page.goto('https://www.testing101.net/category/all-products');
+await page.goto(URLs.pageLinkCategoryAllProducts);
 await page.waitForTimeout(5000);
 
 //Click on the Sorting option of the FIlter tab

@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 import {URLs} from '../Common/URLs';
+import {pagePLP} from '../PageObject/PagePLP'
+import { pageCartPage } from '../PageObject/PageCartPage';
 
 test.only('End-to-End Purchase Flow with the Xpath locators', async ({ page }) => {
 test.setTimeout(50000);  
@@ -7,27 +9,28 @@ test.setTimeout(50000);
 await page.goto(URLs.pageLinkCategoryAllProducts);
 await page.waitForTimeout(5000);
 
+const plpPage = new pagePLP(page);
 //Click on the Sorting option of the FIlter tab
-const buttonSorting = page.locator("xpath=//span[text()='Sorting']");
+const buttonSorting = page.locator(plpPage.buttonSorting);
 await buttonSorting.click();
 await page.waitForTimeout(5000);
 //Click on the Add To Cart button on the Americano product
-const buttonAddToCartPLP = page.locator("xpath=//div[@data-slug='americano']//span[text()='Add to Cart']");
+const buttonAddToCartPLP = page.locator(plpPage.buttonAddToCartPLP);
 await buttonAddToCartPLP.waitFor();
 await buttonAddToCartPLP.click();
 
 //Start interacting with the iframe
-
-const buttonViewCart = page.locator('xpath=//button//span[text()="View Cart"]');
+const cartPage = new pageCartPage(page);
+const buttonViewCart = page.locator(cartPage.buttonViewCart);
 await buttonViewCart.waitFor();
 await buttonViewCart.click();
 
 //Cart Assertion
-const assertionEmptyCart = page.locator('xpath=//h3[@data-hook="EmptyState.title"]');
+const assertionEmptyCart = page.locator(cartPage.assertionEmptyCart);
 await expect(assertionEmptyCart).not.toBeVisible();
 
 //Click on the checkout button on the My Cart page
-const buttonCheckout = page.locator('xpath=//span[text()="Checkout"]');
+const buttonCheckout = page.locator(cartPage.buttonCheckout);
 await buttonCheckout.waitFor();
 await buttonCheckout.click();
 

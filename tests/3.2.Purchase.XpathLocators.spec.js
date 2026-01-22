@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import {URLs} from '../Common/URLs';
 import {pagePLP} from '../PageObject/PagePLP'
 import { pageCartPage } from '../PageObject/PageCartPage';
+import { pageCheckout } from '../PageObject/PageCheckout';
 
 test.only('End-to-End Purchase Flow with the Xpath locators', async ({ page }) => {
 test.setTimeout(50000);  
@@ -35,42 +36,43 @@ await buttonCheckout.waitFor();
 await buttonCheckout.click();
 
 //Checkout step 1
-const fieldEmail = page.locator("xpath=//input[@aria-label='Email']");
+const checkoutPage = new pageCheckout(page);
+const fieldEmail = page.locator(checkoutPage.fieldEmail);
 await fieldEmail.fill('test@email.com');
-const fieldFirstName = page.locator("xpath=//input[@aria-label='First name']")
+const fieldFirstName = page.locator(checkoutPage.fieldFirstName)
 await fieldFirstName.fill('Mary');
-const fieldLastName = page.locator("xpath=//input[@aria-label='Last name']")
+const fieldLastName = page.locator(checkoutPage.fieldLastName)
 await fieldLastName.fill('Smith');
-const fieldPhone = page.locator("xpath=//input[@aria-label='Phone']")
+const fieldPhone = page.locator(checkoutPage.fieldPhone)
 await fieldPhone.fill('123-456-7890');
 
 //Locate country dropdown input
-const dropdownCountryRegion = page.locator("xpath=//div[@data-hook='form-field-country']");
+const dropdownCountryRegion = page.locator(checkoutPage.dropdownCountryRegion);
 await dropdownCountryRegion.click();
-const dropdownOption = page.locator("xpath=//div[text()='Canada']");
+const dropdownOption = page.locator(checkoutPage.dropdownOption);
 await dropdownOption.click();
 
-const fieldAddress = page.locator("xpath=//div[@data-hook='form-field-address_line']//input[@role='combobox']");
+const fieldAddress = page.locator(checkoutPage.fieldAddress);
 await fieldAddress.fill('123 Maple Street')
 
-const fieldCity = page.locator("xpath=//input[@aria-label='City']");
+const fieldCity = page.locator(checkoutPage.fieldCity);
 await fieldCity.fill('Toronto');
 
-const dropdownProvince = page.locator("xpath=//div[@data-field-type='MLA_SUBDIVISION']//input[@class='sD4fPao']")
+const dropdownProvince = page.locator(checkoutPage.dropdownProvince)
 await dropdownProvince.click();
-const dropdownProvinceOption = page.locator("xpath=//div[text()='Ontario']");
+const dropdownProvinceOption = page.locator(checkoutPage.dropdownProvinceOption);
 await dropdownProvinceOption.click();
 
-const fieldZipCode = page.locator("xpath=//input[@aria-label='Zip / Postal code']");
+const fieldZipCode = page.locator(checkoutPage.fieldZipCode);
 await fieldZipCode.fill('M4B 1B3');
 
-const buttonContinueCheckout = page.locator("xpath=//span[text()='Continue']");
+const buttonContinueCheckout = page.locator(checkoutPage.buttonContinueCheckout);
 await buttonContinueCheckout.click();
 
-const buttonContinueCheckout2 = page.locator("xpath=//span[text()='Continue']");
+const buttonContinueCheckout2 = page.locator(checkoutPage.buttonContinueCheckout2);
 await buttonContinueCheckout2.click();
 
-const buttonPlaceOrder = page.locator("xpath=//span[text()='Place Order & Pay']");
+const buttonPlaceOrder = page.locator(checkoutPage.buttonPlaceOrder);
 await buttonPlaceOrder.waitFor();
 await buttonPlaceOrder.click();
 

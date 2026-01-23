@@ -12,4 +12,9 @@ export class testData{
         zipcode: 'M4B 1B3'
     }
         
+    static userLogin = {
+        emailValid: 'andriitest7799@gmail.com',
+        passwordValid: 'Aa123_123'
+    }
+
 }

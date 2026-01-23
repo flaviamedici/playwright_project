@@ -5,7 +5,7 @@ import {pageSignup} from '../PageObject/PageSignUp';
 import { testData } from '../Common/TestData';
 
 
-test('Login with valid credentials', async({page}) => {
+test.only('Login with valid credentials', async({page}) => {
     await page.goto(URLs.pageLinkHomePage)
     await page.waitForTimeout(5000);
     const loginPage = new pageLogin(page);
@@ -18,5 +18,10 @@ test('Login with valid credentials', async({page}) => {
     await fieldEmail.fill(testData.userLogin.emailValid)
     const fieldPassword = page.locator(loginPage.fieldPassword);
     await fieldPassword.fill(testData.userLogin.passwordValid);
+    const buttonLoginPage = page.locator(loginPage.buttonLoginPage);
+    await buttonLoginPage.click();
+
+    // Assertion: Check if 'andriitest7799 account menu' is visible after login
+await expect(page.getByTestId('handle-button')).toBeVisible();
 });
 

@@ -4,7 +4,8 @@ class pageLogin {
         //Deifne Xpath as properties here
         this.buttonLoginHeader = "//span[text()='Log In']";
         this.fieldEmail = "//input[@type='email']";
-        this.fieldPassword = "//input[@type='password']"
+        this.fieldPassword = "//input[@type='password']";
+        this.buttonLoginPage = "//button[@aria-disabled='false' and @data-testid='buttonElement']";
     }
 }
 

@@ -5,7 +5,7 @@ import { pageCartPage } from '../PageObject/PageCartPage';
 import { pageCheckout } from '../PageObject/PageCheckout';
 import { testData } from '../Common/TestData';
 
-test.only('End-to-End Purchase Flow with the Xpath locators', async ({ page }) => {
+test('End-to-End Purchase Flow with the Xpath locators', async ({ page }) => {
 test.setTimeout(50000);  
 // Navigate to the Testing101 website
 await page.goto(URLs.pageLinkCategoryAllProducts);

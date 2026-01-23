@@ -3,6 +3,7 @@ import {URLs} from '../Common/URLs';
 import {pagePLP} from '../PageObject/PagePLP'
 import { pageCartPage } from '../PageObject/PageCartPage';
 import { pageCheckout } from '../PageObject/PageCheckout';
+import { testData } from '../Common/TestData';
 
 test.only('End-to-End Purchase Flow with the Xpath locators', async ({ page }) => {
 test.setTimeout(50000);  
@@ -38,13 +39,13 @@ await buttonCheckout.click();
 //Checkout step 1
 const checkoutPage = new pageCheckout(page);
 const fieldEmail = page.locator(checkoutPage.fieldEmail);
-await fieldEmail.fill('test@email.com');
+await fieldEmail.fill(testData.checkoutCustomerDetails.email);
 const fieldFirstName = page.locator(checkoutPage.fieldFirstName)
-await fieldFirstName.fill('Mary');
+await fieldFirstName.fill(testData.checkoutCustomerDetails.firstName);
 const fieldLastName = page.locator(checkoutPage.fieldLastName)
-await fieldLastName.fill('Smith');
+await fieldLastName.fill(testData.checkoutCustomerDetails.lastName);
 const fieldPhone = page.locator(checkoutPage.fieldPhone)
-await fieldPhone.fill('123-456-7890');
+await fieldPhone.fill(testData.checkoutCustomerDetails.phone);
 
 //Locate country dropdown input
 const dropdownCountryRegion = page.locator(checkoutPage.dropdownCountryRegion);
@@ -53,10 +54,10 @@ const dropdownOption = page.locator(checkoutPage.dropdownOption);
 await dropdownOption.click();
 
 const fieldAddress = page.locator(checkoutPage.fieldAddress);
-await fieldAddress.fill('123 Maple Street')
+await fieldAddress.fill(testData.checkoutDeliveryDetails.address)
 
 const fieldCity = page.locator(checkoutPage.fieldCity);
-await fieldCity.fill('Toronto');
+await fieldCity.fill(testData.checkoutDeliveryDetails.city);
 
 const dropdownProvince = page.locator(checkoutPage.dropdownProvince)
 await dropdownProvince.click();
@@ -64,7 +65,7 @@ const dropdownProvinceOption = page.locator(checkoutPage.dropdownProvinceOption)
 await dropdownProvinceOption.click();
 
 const fieldZipCode = page.locator(checkoutPage.fieldZipCode);
-await fieldZipCode.fill('M4B 1B3');
+await fieldZipCode.fill(testData.checkoutDeliveryDetails.zipcode);
 
 const buttonContinueCheckout = page.locator(checkoutPage.buttonContinueCheckout);
 await buttonContinueCheckout.click();

@@ -14,7 +14,10 @@ export class testData{
         
     static userLogin = {
         emailValid: 'andriitest7799@gmail.com',
-        passwordValid: 'Aa123_123'
+        emailInvalidFormat: 'adriitest7799%gmail.com',
+        passwordValid: 'Aa123_123',
+        passwordInvalid: 'Aa123_1',
+        emailUnexistent: 'andriitest12345@gmail.com'
     }
 
 }

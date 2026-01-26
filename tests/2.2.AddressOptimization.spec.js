@@ -39,5 +39,43 @@ test.only('Add a new Address in My Account', async({page}) => {
     const iframeNewAddress = page.frameLocator(myAccountPage.iframeNewAddress);
     const fieldFirstName = iframeNewAddress.locator(myAccountPage.fieldFirstName);
     await fieldFirstName.fill(testData.CustomerDetails.firstName);
+    const fieldLastName = iframeNewAddress.locator(myAccountPage.fieldLastName);
+    await fieldLastName.fill(testData.CustomerDetails.lastName);
+    const fieldCompanyName = iframeNewAddress.locator(myAccountPage.fieldCompanyName);
+    await fieldCompanyName.fill(testData.CustomerDetails.companyName);
+    const fieldAddress = iframeNewAddress.locator(myAccountPage.fieldAddress);
+    await fieldAddress.fill(testData.DeliveryDetails.address);
+    //const fieldAddressLine2 = iframeNewAddress.locator(myAccountPage.fieldAddressLine2);
+    //await fieldAddressLine2.fill(testData.DeliveryDetails.address);
+    const fieldCity = iframeNewAddress.locator(myAccountPage.fieldCity);
+    await fieldCity.fill(testData.DeliveryDetails.city);
+    const dropdownCountry = iframeNewAddress.locator(myAccountPage.dropdownCountry);
+    await dropdownCountry.click();
+    const dropdownOption = iframeNewAddress.locator(myAccountPage.dropdownOption);
+    await dropdownOption.click();
+    const dropdownProvince = iframeNewAddress.locator(myAccountPage.dropdownProvince);
+    await dropdownProvince.click();
+    const dropdownProvinceOption = iframeNewAddress.locator(myAccountPage.dropdownProvOption);
+    await dropdownProvinceOption.click();
+    const fieldZipCode = iframeNewAddress.locator(myAccountPage.fieldZipCode);
+    await fieldZipCode.fill(testData.DeliveryDetails.zipcode);
+    const fieldPhone = iframeNewAddress.locator(myAccountPage.fieldPhone);
+    await fieldPhone.fill(testData.CustomerDetails.phone);
+
+    const buttonAddAddress = iframeNewAddress.locator(myAccountPage.buttonAddAddress);
+    await buttonAddAddress.click();
+
+    //Assertion
+    const addressLocator = page.frameLocator('iframe[title="My Addresses"]')
+        .locator('address[data-hook="formatted-address"]');
+
+    await expect(addressLocator).toHaveText(`
+        Mary Smith
+    Amazon
+    123 Maple Street
+    Toronto, Ontario M4B 1B3
+    Canada
+    123-456-7890`)
+
 });
 

@@ -4,11 +4,13 @@ export class testData{
         firstName: 'Mary',
         lastName: 'Smith',
         phone: '123-456-7890',
+        companyName: 'Amazon'
         
     }
     static DeliveryDetails = {
         address: '123 Maple Street',
         city: 'Toronto',
+        province: 'Ontario',
         zipcode: 'M4B 1B3'
     }
         

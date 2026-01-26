@@ -39,13 +39,13 @@ await buttonCheckout.click();
 //Checkout step 1
 const checkoutPage = new pageCheckout(page);
 const fieldEmail = page.locator(checkoutPage.fieldEmail);
-await fieldEmail.fill(testData.checkoutCustomerDetails.email);
+await fieldEmail.fill(testData.CustomerDetails.email);
 const fieldFirstName = page.locator(checkoutPage.fieldFirstName)
-await fieldFirstName.fill(testData.checkoutCustomerDetails.firstName);
+await fieldFirstName.fill(testData.CustomerDetails.firstName);
 const fieldLastName = page.locator(checkoutPage.fieldLastName)
-await fieldLastName.fill(testData.checkoutCustomerDetails.lastName);
+await fieldLastName.fill(testData.CustomerDetails.lastName);
 const fieldPhone = page.locator(checkoutPage.fieldPhone)
-await fieldPhone.fill(testData.checkoutCustomerDetails.phone);
+await fieldPhone.fill(testData.CustomerDetails.phone);
 
 //Locate country dropdown input
 const dropdownCountryRegion = page.locator(checkoutPage.dropdownCountryRegion);
@@ -54,10 +54,10 @@ const dropdownOption = page.locator(checkoutPage.dropdownOption);
 await dropdownOption.click();
 
 const fieldAddress = page.locator(checkoutPage.fieldAddress);
-await fieldAddress.fill(testData.checkoutDeliveryDetails.address)
+await fieldAddress.fill(testData.DeliveryDetails.address)
 
 const fieldCity = page.locator(checkoutPage.fieldCity);
-await fieldCity.fill(testData.checkoutDeliveryDetails.city);
+await fieldCity.fill(testData.DeliveryDetails.city);
 
 const dropdownProvince = page.locator(checkoutPage.dropdownProvince)
 await dropdownProvince.click();
@@ -65,7 +65,7 @@ const dropdownProvinceOption = page.locator(checkoutPage.dropdownProvinceOption)
 await dropdownProvinceOption.click();
 
 const fieldZipCode = page.locator(checkoutPage.fieldZipCode);
-await fieldZipCode.fill(testData.checkoutDeliveryDetails.zipcode);
+await fieldZipCode.fill(testData.DeliveryDetails.zipcode);
 
 const buttonContinueCheckout = page.locator(checkoutPage.buttonContinueCheckout);
 await buttonContinueCheckout.click();

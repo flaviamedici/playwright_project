@@ -5,7 +5,7 @@ import {pageSignup} from '../PageObject/PageSignUp';
 import { testData } from '../Common/TestData';
 
 
-test.only('Login with valid credentials', async({page}) => {
+test('Login with valid credentials', async({page}) => {
     await page.goto(URLs.pageLinkHomePage)
     await page.waitForTimeout(5000);
     const loginPage = new pageLogin(page);
@@ -25,7 +25,7 @@ test.only('Login with valid credentials', async({page}) => {
     await expect(page.getByTestId('handle-button')).toBeVisible();
 });
 
-test.only('Login with empty fields of the Login form', async({page}) => {
+test('Login with empty fields of the Login form', async({page}) => {
     await page.goto(URLs.pageLinkHomePage)
     await page.waitForTimeout(5000);
     const loginPage = new pageLogin(page);
@@ -43,7 +43,7 @@ test.only('Login with empty fields of the Login form', async({page}) => {
 });
 
 
-test.only('Login with empty Email field of the Login form', async({page}) => {
+test('Login with empty Email field of the Login form', async({page}) => {
     await page.goto(URLs.pageLinkHomePage)
     await page.waitForTimeout(5000);
     const loginPage = new pageLogin(page);
@@ -62,7 +62,7 @@ test.only('Login with empty Email field of the Login form', async({page}) => {
 
 });
 
-test.only('Login with empty Password field of the Login form', async({page}) => {
+test('Login with empty Password field of the Login form', async({page}) => {
     await page.goto(URLs.pageLinkHomePage)
     await page.waitForTimeout(5000);
     const loginPage = new pageLogin(page);
@@ -81,7 +81,7 @@ test.only('Login with empty Password field of the Login form', async({page}) => 
 
 });
 
-test.only('Login with invalid format of the email', async({page}) => {
+test('Login with invalid format of the email', async({page}) => {
     await page.goto(URLs.pageLinkHomePage)
     await page.waitForTimeout(5000);
     const loginPage = new pageLogin(page);
@@ -101,7 +101,7 @@ test.only('Login with invalid format of the email', async({page}) => {
     await expect(page.getByTestId('handle-button')).toBeVisible();
 });
 
-test.only('Login with invalid password', async({page}) => {
+test('Login with invalid password', async({page}) => {
     await page.goto(URLs.pageLinkHomePage)
     await page.waitForTimeout(5000);
     const loginPage = new pageLogin(page);
@@ -121,7 +121,7 @@ test.only('Login with invalid password', async({page}) => {
     await expect(page.getByText('Wrong email or password')).toBeVisible();
 });
 
-test.only('Login with non-existent user email', async({page}) => {
+test('Login with non-existent user email', async({page}) => {
     await page.goto(URLs.pageLinkHomePage)
     await page.waitForTimeout(5000);
     const loginPage = new pageLogin(page);
